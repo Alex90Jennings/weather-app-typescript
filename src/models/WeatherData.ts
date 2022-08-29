@@ -1,12 +1,10 @@
 import { GET_WEATHER, SET_ERROR, SET_LOADING } from "./types"
 
 export interface WeatherData {
-    temp: number,
-    heatindex: number,
+    address: string,
+    conditions: string,
+    maxt: number,
     precip: number,
-    weathertype: string,
-    humidity: number,
-    precipcover: number
 }
 
 export interface WeatherError {
