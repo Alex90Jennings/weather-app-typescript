@@ -11,7 +11,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
     const monthlyRain = (data: any): number => {
         let monthlyRain = 0
         for(let i=0; i < 31; i++){
-            const dailyRain: number = data.locations.london.values[i].precip
+            const dailyRain: number = data.locations.polignano.values[i].precip
             monthlyRain += dailyRain
         }
         return Math.round(monthlyRain)
@@ -20,14 +20,14 @@ const Weather: FC<WeatherProps> = ({data}) => {
     const averageTemp = (data: any): number => {
         let averageTemp = 0
         for(let i=0; i < 31; i++){
-            const dailyTemp: number = data.locations.london.values[i].maxt
+            const dailyTemp: number = data.locations.polignano.values[i].maxt
             averageTemp += dailyTemp
         }
-        return Math.round(averageTemp / data.locations.london.values.length)
+        return Math.round(averageTemp / data.locations.polignano.values.length)
     }
 
     const dailyIndex = (daysAgo: number): number => {
-        let index: number = data.locations.london.values.length - ( daysAgo + 1 )
+        let index: number = data.locations.polignano.values.length - ( daysAgo + 1 )
         return index
     }
 
@@ -44,47 +44,47 @@ const Weather: FC<WeatherProps> = ({data}) => {
     return (
         <section className='section'>
             <div className='container'>
-                <h1 className='title has-text-centered' style={{marginBottom: 50}}>{data.locations.london.address.toUpperCase()}</h1>
+                <h1 className='title has-text-centered' style={{marginBottom: 50}}>{data.locations.polignano.address.toUpperCase()}</h1>
             </div>
             <div className='level-item has-text-centered'>
                 <div>
                     <p className='heading'>4 days ago</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(4)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(4)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(4)].maxt)}mm</p>
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.polignano.values[dailyIndex(4)].conditions}.png`} alt="icon" />
+                        <p className='mb-2'>Max Temp - {Math.round(data.locations.polignano.values[dailyIndex(4)].maxt)}°C</p>
+                        <p className='mb-2'>Precipitation - {Math.round(data.locations.polignano.values[dailyIndex(4)].maxt)}mm</p>
                     </div>
                 </div>
                 <div>
                     <p className='heading'>3 days ago</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(3)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(3)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(3)].precip)}mm</p>
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.polignano.values[dailyIndex(3)].conditions}.png`} alt="icon" />
+                        <p className='mb-2'>Max Temp - {Math.round(data.locations.polignano.values[dailyIndex(3)].maxt)}°C</p>
+                        <p className='mb-2'>Precipitation - {Math.round(data.locations.polignano.values[dailyIndex(3)].precip)}mm</p>
                     </div>
                 </div>
                 <div>
                     <p className='heading'>2 days ago</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(2)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(2)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(2)].precip)}mm</p>
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.polignano.values[dailyIndex(2)].conditions}.png`} alt="icon" />
+                        <p className='mb-2'>Max Temp - {Math.round(data.locations.polignano.values[dailyIndex(2)].maxt)}°C</p>
+                        <p className='mb-2'>Precipitation - {Math.round(data.locations.polignano.values[dailyIndex(2)].precip)}mm</p>
                     </div>
                 </div>
                 <div>
                     <p className='heading'>Yesterday</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(1)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(1)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(1)].precip)}mm</p>
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.polignano.values[dailyIndex(1)].conditions}.png`} alt="icon" />
+                        <p className='mb-2'>Max Temp - {Math.round(data.locations.polignano.values[dailyIndex(1)].maxt)}°C</p>
+                        <p className='mb-2'>Precipitation - {Math.round(data.locations.polignano.values[dailyIndex(1)].precip)}mm</p>
                     </div>
                 </div>
                 <div>
                     <p className='heading'>Today</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(0)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(0)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(0)].precip)}mm</p>
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.polignano.values[dailyIndex(0)].conditions}.png`} alt="icon" />
+                        <p className='mb-2'>Max Temp - {Math.round(data.locations.polignano.values[dailyIndex(0)].maxt)}°C</p>
+                        <p className='mb-2'>Precipitation - {Math.round(data.locations.polignano.values[dailyIndex(0)].precip)}mm</p>
                     </div>
                 </div>
             </div>

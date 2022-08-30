@@ -2,7 +2,7 @@ import { GET_WEATHER, SET_ERROR, SET_LOADING } from "./types"
 
 export interface WeatherData {
     locations: {
-        london: {
+        polignano: {
             values: DailyData[],
             address: string
         }
