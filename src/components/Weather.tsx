@@ -36,7 +36,8 @@ const Weather: FC<WeatherProps> = ({data}) => {
         if(monthlyRain === 0) return 1
         const adjustedTemp: number = (averageTemp < 40 ? averageTemp / 40 : 1)
         const adjustedRain : number = (monthlyRain / 50)
-        return adjustedTemp * adjustedRain
+        const droughtIndex = adjustedTemp * adjustedRain
+        return droughtIndex.toFixed(2)
     }
 
     
