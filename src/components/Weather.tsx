@@ -39,12 +39,12 @@ const Weather: FC<WeatherProps> = ({data}) => {
     }
 
     
-    console.log(`/icons/${data.locations.london.values[dailyIndex(3)].conditions}.png`)
+    console.log(data)
 
     return (
         <section className='section'>
             <div className='container'>
-                <h1 className='title has-text-centered' style={{marginBottom: 50}}>{city.toUpperCase()}</h1>
+                <h1 className='title has-text-centered' style={{marginBottom: 50}}>{data.locations.london.address.toUpperCase()}</h1>
             </div>
             <div className='level-item has-text-centered'>
                 <div>

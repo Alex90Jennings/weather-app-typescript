@@ -19,7 +19,7 @@ const Search: FC<SearchProps> = ({ title }) => {
         e.preventDefault()
 
         if(city.trim() === ''){
-            return console.log("please enter a city")
+            return alert("please enter a city")
         }
 
         localStorage.setItem('city', city)

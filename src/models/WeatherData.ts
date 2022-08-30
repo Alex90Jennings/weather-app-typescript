@@ -1,10 +1,10 @@
 import { GET_WEATHER, SET_ERROR, SET_LOADING } from "./types"
 
 export interface WeatherData {
-    address: string,
     locations: {
         london: {
-            values: DailyData[]
+            values: DailyData[],
+            address: string
         }
     }
 }
