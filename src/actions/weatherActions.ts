@@ -14,6 +14,7 @@ export const getWeather = (city: string): ThunkAction<void, RootState, null, Wea
             }
 
             const resData: WeatherData = await res.json()
+            //deconstruct resData
             dispatch({
                 type: GET_WEATHER,
                 payload: resData

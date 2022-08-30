@@ -2,6 +2,10 @@ import { GET_WEATHER, SET_ERROR, SET_LOADING } from "./types"
 
 export interface WeatherData {
     address: string,
+    values: DailyData[]
+}
+
+export interface DailyData {
     conditions: string,
     maxt: number,
     precip: number,
