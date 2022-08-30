@@ -6,7 +6,8 @@ interface WeatherProps {
 }
 
 const Weather: FC<WeatherProps> = ({data}) => {
-    const city: string = "london".toLowerCase()
+    const city: string = localStorage.getItem('city')!
+    console.log(data)
 
     const monthlyRain = (data: any): number => {
         let monthlyRain = 0
@@ -21,7 +22,6 @@ const Weather: FC<WeatherProps> = ({data}) => {
         let averageTemp = 0
         for(let i=0; i < 31; i++){
             const dailyTemp: number = data.locations.london.values[i].maxt
-            console.log(`day ${i} has the temp of ${dailyTemp}`)
             averageTemp += dailyTemp
         }
         return Math.round(averageTemp / data.locations.london.values.length)
@@ -42,7 +42,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
     return (
         <section className='section'>
             <div className='container'>
-                <h1 className='title has-text-centered' style={{marginBottom: 50}}>{data.address}</h1>
+                <h1 className='title has-text-centered' style={{marginBottom: 50}}>{city.toUpperCase()}</h1>
             </div>
             <div className='level-item has-text-centered'>
                 <div>

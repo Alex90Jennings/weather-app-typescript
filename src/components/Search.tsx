@@ -22,6 +22,8 @@ const Search: FC<SearchProps> = ({ title }) => {
             return console.log("please enter a city")
         }
 
+        localStorage.setItem('city', city)
+
         dispatch(setLoading())
         dispatch(getWeather(city))
         setCity('')
