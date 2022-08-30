@@ -33,6 +33,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
 
     const droughtIndex = (averageTemp: number, monthlyRain: number) => {
         if(monthlyRain > 49 || averageTemp < 1) return 0
+        if(monthlyRain === 0) return 1
         const adjustedTemp: number = (averageTemp < 40 ? averageTemp / 40 : 1)
         const adjustedRain : number = (monthlyRain / 50)
         return adjustedTemp * adjustedRain
@@ -52,7 +53,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
                     <div className='title'>
                         <img style={{maxWidth: 50}} src={`/icons/${data.locations.polignano.values[dailyIndex(4)].conditions}.png`} alt="icon" />
                         <p className='mb-2'>Max Temp - {Math.round(data.locations.polignano.values[dailyIndex(4)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations.polignano.values[dailyIndex(4)].maxt)}mm</p>
+                        <p className='mb-2'>Precipitation - {Math.round(data.locations.polignano.values[dailyIndex(4)].precip)}mm</p>
                     </div>
                 </div>
                 <div>
