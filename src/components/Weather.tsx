@@ -7,7 +7,6 @@ interface WeatherProps {
 
 const Weather: FC<WeatherProps> = ({data}) => {
     const city: string = localStorage.getItem('city')!
-    console.log(data)
 
     const monthlyRain = (data: any): number => {
         let monthlyRain = 0
@@ -39,6 +38,9 @@ const Weather: FC<WeatherProps> = ({data}) => {
         return adjustedTemp * adjustedRain
     }
 
+    
+    console.log(`/icons/${data.locations.london.values[dailyIndex(3)].conditions}.png`)
+
     return (
         <section className='section'>
             <div className='container'>
@@ -48,7 +50,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
                 <div>
                     <p className='heading'>4 days ago</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`../public/icons/${data.locations.london.values[dailyIndex(4)].conditions}.png`} alt="icon" />
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(4)].conditions}.png`} alt="icon" />
                         <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(4)].maxt)}°C</p>
                         <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(4)].maxt)}mm</p>
                     </div>
@@ -56,7 +58,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
                 <div>
                     <p className='heading'>3 days ago</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`../public/icons/${data.locations.london.values[dailyIndex(3)].conditions}.png`} alt="icon" />
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(3)].conditions}.png`} alt="icon" />
                         <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(3)].maxt)}°C</p>
                         <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(3)].precip)}mm</p>
                     </div>
@@ -64,7 +66,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
                 <div>
                     <p className='heading'>2 days ago</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`../public/icons/${data.locations.london.values[dailyIndex(2)].conditions}.png`} alt="icon" />
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(2)].conditions}.png`} alt="icon" />
                         <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(2)].maxt)}°C</p>
                         <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(2)].precip)}mm</p>
                     </div>
@@ -72,7 +74,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
                 <div>
                     <p className='heading'>Yesterday</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`../public/icons/${data.locations.london.values[dailyIndex(1)].conditions}.png`} alt="icon" />
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(1)].conditions}.png`} alt="icon" />
                         <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(1)].maxt)}°C</p>
                         <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(1)].precip)}mm</p>
                     </div>
@@ -80,7 +82,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
                 <div>
                     <p className='heading'>Today</p>
                     <div className='title'>
-                        <img style={{maxWidth: 50}} src={`../public/icons/${data.locations.london.values[dailyIndex(0)].conditions}.png`} alt="icon" />
+                        <img style={{maxWidth: 50}} src={`/icons/${data.locations.london.values[dailyIndex(0)].conditions}.png`} alt="icon" />
                         <p className='mb-2'>Max Temp - {Math.round(data.locations.london.values[dailyIndex(0)].maxt)}°C</p>
                         <p className='mb-2'>Precipitation - {Math.round(data.locations.london.values[dailyIndex(0)].precip)}mm</p>
                     </div>
