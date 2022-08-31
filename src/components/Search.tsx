@@ -36,7 +36,7 @@ const Search: FC<SearchProps> = ({ title }) => {
                 <div className='container'>
                     <h1 className='title'>{title}</h1>
                     <form className='py-5' onSubmit={submitHandler}>
-                        <input type="text" className='input has-text-centered mb-2' placeholder='enter polignano here' style={{maxWidth: 300}} value={city} onChange={changeHandler} />
+                        <input type="text" className='input has-text-centered mb-2' placeholder='enter city here' style={{maxWidth: 300}} value={city} onChange={changeHandler} />
                         <button className='button is-primary is-fullwidth' style={{maxWidth: 300, margin: '0 auto'}}>Search</button>
                     </form>
                 </div>
