@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { setAlert } from '../actions/alertActions'
 import { WeatherData } from '../models/WeatherData'
 
 interface WeatherProps {
@@ -10,7 +11,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
 
     if(!data.locations) {
         console.log("error")
-        throw new Error(`${city} does not exist`)
+        setAlert(`${city} does not exist`)
     }
 
     const monthlyRain = (data: any): number => {
@@ -46,60 +47,62 @@ const Weather: FC<WeatherProps> = ({data}) => {
     }
 
     return (
-        <section className='section'>
-            <div className='container'>
-                <h1 className='title has-text-centered' style={{marginBottom: 50}}>{data.locations[`${city}`].address.toUpperCase()}</h1>
-            </div>
-            <div className='level-item has-text-centered'>
-                <div>
-                    <p className='heading'>4 days ago</p>
-                    <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(4)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(4)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(4)].precip)}mm</p>
+        data.locations && (
+            <section className='section'>
+                <div className='container'>
+                    <h1 className='title has-text-centered' style={{marginBottom: 50}}>{data.locations[`${city}`].address.toUpperCase()}</h1>
+                </div>
+                <div className='level-item has-text-centered'>
+                    <div>
+                        <p className='heading'>4 days ago</p>
+                        <div className='title'>
+                            <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(4)].conditions}.png`} alt="icon" />
+                            <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(4)].maxt)}°C</p>
+                            <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(4)].precip)}mm</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p className='heading'>3 days ago</p>
+                        <div className='title'>
+                            <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(3)].conditions}.png`} alt="icon" />
+                            <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(3)].maxt)}°C</p>
+                            <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(3)].precip)}mm</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p className='heading'>2 days ago</p>
+                        <div className='title'>
+                            <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(2)].conditions}.png`} alt="icon" />
+                            <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(2)].maxt)}°C</p>
+                            <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(2)].precip)}mm</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p className='heading'>Yesterday</p>
+                        <div className='title'>
+                            <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(1)].conditions}.png`} alt="icon" />
+                            <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(1)].maxt)}°C</p>
+                            <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(1)].precip)}mm</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p className='heading'>Today</p>
+                        <div className='title'>
+                            <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(0)].conditions}.png`} alt="icon" />
+                            <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(0)].maxt)}°C</p>
+                            <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(0)].precip)}mm</p>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <p className='heading'>3 days ago</p>
-                    <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(3)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(3)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(3)].precip)}mm</p>
+                <div className='level-item has-text-centered'>
+                    <div>
+                        <p className='heading'>Precipitation in the last 30 days - {monthlyRain(data)}mm</p>
+                        <p className='heading'>Average Highest Temp in the last 30 days - {averageTemp(data)}°C</p>
+                        <p className='heading'>Drought Index - {droughtIndex(averageTemp(data), monthlyRain(data))}</p>
                     </div>
                 </div>
-                <div>
-                    <p className='heading'>2 days ago</p>
-                    <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(2)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(2)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(2)].precip)}mm</p>
-                    </div>
-                </div>
-                <div>
-                    <p className='heading'>Yesterday</p>
-                    <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(1)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(1)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(1)].precip)}mm</p>
-                    </div>
-                </div>
-                <div>
-                    <p className='heading'>Today</p>
-                    <div className='title'>
-                        <img style={{maxWidth: 50}} src={`/icons/${data.locations[`${city}`].values[dailyIndex(0)].conditions}.png`} alt="icon" />
-                        <p className='mb-2'>Max Temp - {Math.round(data.locations[`${city}`].values[dailyIndex(0)].maxt)}°C</p>
-                        <p className='mb-2'>Precipitation - {Math.round(data.locations[`${city}`].values[dailyIndex(0)].precip)}mm</p>
-                    </div>
-                </div>
-            </div>
-            <div className='level-item has-text-centered'>
-                <div>
-                    <p className='heading'>Precipitation in the last 30 days - {monthlyRain(data)}mm</p>
-                    <p className='heading'>Average Highest Temp in the last 30 days - {averageTemp(data)}°C</p>
-                    <p className='heading'>Drought Index - {droughtIndex(averageTemp(data), monthlyRain(data))}</p>
-                </div>
-            </div>
-        </section>
+            </section>
+        )
     )
 }
 
