@@ -1,16 +1,14 @@
-import { GET_WEATHER, SET_ALERT, SET_ERROR, SET_LOADING } from "./types"
+import { UrlWithStringQuery } from "url";
+import { GET_WEATHER, SET_ERROR, SET_LOADING } from "./types"
 
 export interface WeatherData {
-    name: string,
-    weather: Weather[]
-    main: {
-        temp: number,
-        feels_like: number,
-        temp_min: number,
-        temp_max: number
-    },
-    sys: {
-        country: string
+    locations: Location
+}
+
+interface Location {
+    [cityName: string] : {
+        address: string,
+        values: DailyData[]
     }
 }
 
