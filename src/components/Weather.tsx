@@ -8,6 +8,8 @@ interface WeatherProps {
 const Weather: FC<WeatherProps> = ({data}) => {
     const city: string = localStorage.getItem('city')!
 
+    console.log(data.locations.london.values)
+
     const monthlyRain = (data: any): number => {
         let monthlyRain = 0
         for(let i=0; i < 31; i++){
@@ -40,15 +42,16 @@ const Weather: FC<WeatherProps> = ({data}) => {
         return droughtIndex.toFixed(2)
     }
 
-    
-    console.log(data)
+    const createPath = (city: string, index:number, query: string) => {
+        if(query === "icon") return `/icons/${data.locations.polignano.values[dailyIndex(index)].conditions}.png`
+    }
 
     return (
         <section className='section'>
-            <div className='container'>
+            {/* <div className='container'>
                 <h1 className='title has-text-centered' style={{marginBottom: 50}}>{data.locations.polignano.address.toUpperCase()}</h1>
-            </div>
-            <div className='level-item has-text-centered'>
+            </div> */}
+            {/* <div className='level-item has-text-centered'>
                 <div>
                     <p className='heading'>4 days ago</p>
                     <div className='title'>
@@ -96,7 +99,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
                     <p className='heading'>Average Highest Temp in the last 30 days - {averageTemp(data)}°C</p>
                     <p className='heading'>Drought Index - {droughtIndex(averageTemp(data), monthlyRain(data))}</p>
                 </div>
-            </div>
+            </div> */}
         </section>
     )
 }

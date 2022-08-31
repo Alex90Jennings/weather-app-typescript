@@ -1,11 +1,14 @@
+import { UrlWithStringQuery } from "url";
 import { GET_WEATHER, SET_ERROR, SET_LOADING } from "./types"
 
 export interface WeatherData {
-    locations: {
-        polignano: {
-            values: DailyData[],
-            address: string
-        }
+    address: string,
+    locations: Location
+}
+
+interface Location {
+    [cityName: string] : {
+     values: DailyData[]
     }
 }
 
