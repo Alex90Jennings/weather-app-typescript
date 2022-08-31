@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { useDispatch } from 'react-redux'
 import { setAlert } from '../actions/alertActions'
 import { WeatherData } from '../models/WeatherData'
 
@@ -8,11 +9,9 @@ interface WeatherProps {
 
 const Weather: FC<WeatherProps> = ({data}) => {
     const city = localStorage.getItem("city")
+    const dispatch = useDispatch()
 
-    if(!data.locations) {
-        console.log("error")
-        setAlert(`${city} does not exist`)
-    }
+    if(!data.locations) {dispatch(setAlert(`${city} does not exist`))}
 
     const monthlyRain = (data: any): number => {
         let monthlyRain = 0

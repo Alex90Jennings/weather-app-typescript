@@ -21,7 +21,10 @@ const App: FC = () => {
     <div className='has-text-centered'>
       <Search title='Enter city name and press search button'/>
       {loading ? <h2 className='is-size-3 py-2'>Loading...</h2> : weatherData && <Weather data={weatherData}/>}
-      {alertMessage && <Alert message={alertMessage} onClose={() => dispatch(setAlert(''))}/>}
+      {alertMessage && <Alert message={alertMessage} onClose={() => {
+        dispatch(setAlert(''))
+        console.log(alertMessage)
+      }}/>}
       {error && <Alert message={error} onClose={() => dispatch(setError())}/>}
     </div>
   );
