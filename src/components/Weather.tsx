@@ -8,7 +8,10 @@ interface WeatherProps {
 const Weather: FC<WeatherProps> = ({data}) => {
     const city = localStorage.getItem("city")
 
-    console.log(data.locations[`${city}`])
+    if(!data.locations) {
+        console.log("error")
+        throw new Error(`${city} does not exist`)
+    }
 
     const monthlyRain = (data: any): number => {
         let monthlyRain = 0
@@ -45,7 +48,7 @@ const Weather: FC<WeatherProps> = ({data}) => {
     return (
         <section className='section'>
             <div className='container'>
-                <h1 className='title has-text-centered' style={{marginBottom: 50}}>{data.locations[`${city}`].address}</h1>
+                <h1 className='title has-text-centered' style={{marginBottom: 50}}>{data.locations[`${city}`].address.toUpperCase()}</h1>
             </div>
             <div className='level-item has-text-centered'>
                 <div>

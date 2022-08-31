@@ -1,4 +1,3 @@
-import { UrlWithStringQuery } from "url";
 import { GET_WEATHER, SET_ERROR, SET_LOADING, SET_ALERT } from "./types"
 
 export interface WeatherData {
