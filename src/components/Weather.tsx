@@ -95,7 +95,6 @@ const Weather: FC<WeatherProps> = ({data}) => {
                     <p className='heading'>Average Highest Temp in the last 30 days - {averageTemp(data)}°C</p>
                     <p className='heading'>Drought Index - {droughtIndex(averageTemp(data), monthlyRain(data))}</p>
                 </div>
->>>>>>> main
             </div>
         </section>
     )

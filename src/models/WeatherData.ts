@@ -1,5 +1,5 @@
 import { UrlWithStringQuery } from "url";
-import { GET_WEATHER, SET_ERROR, SET_LOADING } from "./types"
+import { GET_WEATHER, SET_ERROR, SET_LOADING, SET_ALERT } from "./types"
 
 export interface WeatherData {
     locations: Location
@@ -12,10 +12,10 @@ interface Location {
     }
 }
 
-interface Weather {
-    main: string,
-    icon: string,
-    description: string
+export interface DailyData {
+    conditions: string,
+    maxt: number,
+    precip: number,
 }
 
 export interface WeatherError {
