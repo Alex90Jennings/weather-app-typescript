@@ -14,7 +14,7 @@ const Alert : FC<AlertProps> = ({ message, onClose }) => {
                     <p className="modal-card-title has-text-white">{message}</p>
                 </header>
                 <footer className="modal-card-foot" style={{justifyContent: 'center'}}>
-                    <button className="button" onClick={onClose}>Close</button>
+                    <button className="button" onClick={onClose}>Please refresh the page to enter a new city</button>
                 </footer>
             </div>
         </div>
