@@ -11,6 +11,8 @@ Did it rain? If so, how much?
 My weather app shows you the actual weather for the past 5 days, the average max temperature and the amount total of rain in the last 30 days.
 With this information, a gardener finally has a good idea of whether the garden needs some watering or even how much water to give.
 
+This is my first typescript project, whilst also implementing some redux.
+
 The main challenge faced was the historical weather data API, which returned the search city as part of the response body. 
 This was tricky to implement with typescript, as it was difficult to organise interfaces that could change the key value pair to match the name of the search city, for example, London.
 
