@@ -1,3 +1,25 @@
+# Motivation and Learning Objectives
+
+Languages used - typescript, react, redux
+
+This weather app solves a problem I have had since I started gardening - should I water my garden.
+
+It's not always very easy to know the answer to this, especially if you have been away from home for a few days.
+The forecast apps on your phone are great for predicting the weather, but they rarely tell you whether their predictions have come true!
+Did it rain? If so, how much?
+
+My weather app shows you the actual weather for the past 5 days, the average max temperature and the amount total of rain in the last 30 days.
+With this information, a gardener finally has a good idea of whether the garden needs some watering or even how much water to give.
+
+The main challenge faced was the historical weather data API, which returned the search city as part of the response body. 
+This was tricky to implement with typescript, as it was difficult to organise interfaces that could change the key value pair to match the name of the search city, for example, London.
+
+Future updates: I would like to change the styling, my idea is to make the information much more visual by splitting the screen into two sections:
+The top half is the sky and depending on the current weather will be clear or cloudy or raining.
+The bottom half will show the ground, and depending on the drought index will be sandy for very dry and lush green grass for if there has been a lot of rain.
+
+Known bugs: When an invalid city is searched, the pop up box does not close when the close button is pressed. Only a full refresh of the webpage can restore functionality.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
