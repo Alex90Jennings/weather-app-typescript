@@ -22,6 +22,16 @@ The bottom half will show the ground, and depending on the drought index will be
 
 Known bugs: When an invalid city is searched, the pop up box does not close when the close button is pressed. Only a full refresh of the webpage can restore functionality.
 
+# Instructions
+
+Fork and clone the repo into a code editor
+
+In the terminal install the dependencies with npm install and then run the react app with npm run
+
+Enter a city into the input form, then click the search button
+
+The appropriate data should render, or a warning if the city was not found
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
